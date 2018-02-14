@@ -1,4 +1,4 @@
-import os
+import os, sys
 from random import shuffle
 
 from flask import Flask, request, session, g, redirect, url_for, abort, \
@@ -21,6 +21,6 @@ def static_files(name):
 @app.route('/next_move')
 def next_move():
     ret = do_move( request.args )
-    print(" Playing on position {}".format(ret))
+    print(" Playing on position {}".format(ret), file=sys.stderr)
     return jsonify(result=ret)
 
